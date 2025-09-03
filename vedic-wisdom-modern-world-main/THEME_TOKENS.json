@@ -1,0 +1,27 @@
+{
+  "colors": {
+    "primary": "hsl(15 85% 55%)",
+    "primaryForeground": "hsl(0 0% 100%)",
+    "background": "hsl(35 20% 98%)",
+    "foreground": "hsl(25 15% 15%)",
+    "muted": "hsl(35 15% 94%)",
+    "mutedForeground": "hsl(25 10% 45%)",
+    "accent": "hsl(25 40% 88%)"
+  },
+  "fonts": {
+    "heading": "'Playfair Display', Georgia, serif",
+    "body": "Inter, system-ui, sans-serif"
+  },
+  "radius": {
+    "base": "0.75rem",
+    "card": "1rem",
+    "button": "9999px"
+  },
+  "buttons": {
+    "weight": 600,
+    "radius": "9999px",
+    "shadow": "0 6px 16px -6px hsl(15 85% 55% / 0.25)"
+  },
+  "notes": "Approximation of yogaformodernage.com look & feel using available free fonts."
+}
+
