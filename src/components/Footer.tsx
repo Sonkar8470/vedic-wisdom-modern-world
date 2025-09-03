@@ -2,16 +2,8 @@ import { Link } from "react-router-dom";
 import { 
   Mail, 
   Phone, 
-  MapPin, 
-  Facebook, 
-  Youtube, 
-  Instagram, 
-  Twitter,
-  Heart,
-  Send
+  MapPin
 } from "lucide-react";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
 
 const Footer = () => {
@@ -24,12 +16,6 @@ const Footer = () => {
     { name: "Contact", path: "/contact" },
   ];
 
-  const socialLinks = [
-    { icon: Facebook, href: "https://facebook.com/yogaformodernage", label: "Facebook" },
-    { icon: Youtube, href: "https://youtube.com/yogaformodernage", label: "YouTube" },
-    { icon: Instagram, href: "https://instagram.com/yogaformodernage", label: "Instagram" },
-    { icon: Twitter, href: "https://twitter.com/yogaformodernage", label: "Twitter" },
-  ];
 
   return (
     <footer className="bg-gradient-earth border-t border-border">
@@ -54,10 +40,6 @@ const Footer = () => {
               Bringing timeless Bhakti Yoga wisdom to contemporary seekers through 
               authentic teachings rooted in Vedic tradition.
             </p>
-            <Button variant="donate" className="w-full">
-              <Heart className="h-4 w-4" />
-              Support Our Mission
-            </Button>
           </div>
 
           {/* Quick Links */}
@@ -110,45 +92,12 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Newsletter */}
+          {/* Contact Information */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Stay Connected</h4>
+            <h4 className="font-semibold text-foreground">Get In Touch</h4>
             <p className="text-sm text-muted-foreground">
-              Subscribe to receive wisdom teachings and event updates.
+              Connect with us for spiritual guidance and community support.
             </p>
-            <form className="space-y-3">
-              <Input
-                type="email"
-                placeholder="Your email address"
-                className="bg-background/50"
-              />
-              <Button variant="sacred" className="w-full">
-                <Send className="h-4 w-4" />
-                Subscribe
-              </Button>
-            </form>
-            
-            {/* Social Links */}
-            <div className="pt-4">
-              <p className="text-sm font-medium text-foreground mb-3">Follow Us</p>
-              <div className="flex gap-3">
-                {socialLinks.map((social) => {
-                  const Icon = social.icon;
-                  return (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-background/50 hover:bg-primary hover:text-primary-foreground transition-colors"
-                      aria-label={social.label}
-                    >
-                      <Icon className="h-4 w-4" />
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
           </div>
         </div>
 

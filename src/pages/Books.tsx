@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { ExternalLink, Star, Filter, Search } from "lucide-react";
+import { ExternalLink, Star, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 
 const Books = () => {
-  const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   // Sample books data - would typically come from an API
@@ -109,11 +107,8 @@ const Books = () => {
   ];
 
   const filteredBooks = books.filter(book => {
-    const matchesSearch = book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         book.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         book.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
     const matchesCategory = selectedCategory === "all" || book.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+    return matchesCategory;
   });
 
   return (
@@ -130,19 +125,10 @@ const Books = () => {
           </p>
         </div>
 
-        {/* Search and Filter */}
-        <div className="mb-8 flex flex-col md:flex-row gap-4 max-w-2xl mx-auto">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Search books, topics, or tags..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
-            />
-          </div>
+        {/* Category Filter */}
+        <div className="mb-8 flex justify-center">
           <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-            <SelectTrigger className="md:w-48">
+            <SelectTrigger className="w-48">
               <Filter className="h-4 w-4 mr-2" />
               <SelectValue />
             </SelectTrigger>
@@ -230,30 +216,29 @@ const Books = () => {
           <div className="text-center py-12">
             <div className="space-y-4">
               <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto">
-                <Search className="h-8 w-8 text-muted-foreground" />
+                <Filter className="h-8 w-8 text-muted-foreground" />
               </div>
               <h3 className="text-xl font-semibold text-foreground">No books found</h3>
               <p className="text-muted-foreground">
-                Try adjusting your search terms or category filter.
+                Try selecting a different category.
               </p>
               <Button 
                 variant="outline" 
                 onClick={() => {
-                  setSearchTerm("");
                   setSelectedCategory("all");
                 }}
               >
-                Clear Filters
+                Show All Books
               </Button>
             </div>
           </div>
         )}
 
-        {/* Featured Author Section */}
+        {/* About the Teachings */}
         <div className="mt-16 bg-gradient-earth rounded-2xl p-8">
           <div className="text-center space-y-6">
             <h2 className="text-3xl font-serif font-semibold text-foreground">
-              About the Author
+              About Our Teachings
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Vraja Bihari Das brings together academic excellence and spiritual depth in his writings. 
@@ -262,7 +247,7 @@ const Books = () => {
               complexities of contemporary life.
             </p>
             <Button variant="wisdom" size="lg">
-              Learn More About Vraja Bihari Das
+              Learn More About Our Philosophy
             </Button>
           </div>
         </div>

@@ -6,11 +6,7 @@ import {
   Clock, 
   Send, 
   MessageCircle,
-  Heart,
-  Facebook,
-  Youtube,
-  Instagram,
-  Twitter
+  Heart
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -53,32 +49,6 @@ const Contact = () => {
     }
   ];
 
-  const socialLinks = [
-    { 
-      icon: Facebook, 
-      name: "Facebook", 
-      url: "https://facebook.com/yogaformodernage",
-      description: "Join our community discussions"
-    },
-    { 
-      icon: Youtube, 
-      name: "YouTube", 
-      url: "https://youtube.com/yogaformodernage",
-      description: "Watch spiritual teachings"
-    },
-    { 
-      icon: Instagram, 
-      name: "Instagram", 
-      url: "https://instagram.com/yogaformodernage",
-      description: "Daily inspiration and quotes"
-    },
-    { 
-      icon: Twitter, 
-      name: "Twitter", 
-      url: "https://twitter.com/yogaformodernage",
-      description: "Latest updates and thoughts"
-    }
-  ];
 
   const categories = [
     { value: "general", label: "General Inquiry" },
@@ -278,38 +248,27 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            {/* Social Media */}
+            {/* Community Information */}
             <Card className="border-border">
               <CardHeader>
-                <CardTitle className="text-foreground">Connect With Us</CardTitle>
+                <CardTitle className="text-foreground">Join Our Community</CardTitle>
                 <p className="text-sm text-muted-foreground">
-                  Follow us on social media for daily inspiration and updates
+                  Connect with fellow seekers on the spiritual path
                 </p>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 gap-4">
-                  {socialLinks.map((social, index) => {
-                    const Icon = social.icon;
-                    return (
-                      <a
-                        key={index}
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-3 rounded-lg border border-border hover:shadow-warm transition-all duration-300 hover:scale-105"
-                      >
-                        <Icon className="h-5 w-5 text-primary" />
-                        <div>
-                          <p className="font-medium text-foreground text-sm">
-                            {social.name}
-                          </p>
-                          <p className="text-xs text-muted-foreground">
-                            {social.description}
-                          </p>
-                        </div>
-                      </a>
-                    );
-                  })}
+                <div className="space-y-4 text-sm text-muted-foreground">
+                  <p>
+                    Be part of our growing community of spiritual seekers who support 
+                    each other on the journey of self-discovery and divine connection.
+                  </p>
+                  <p>
+                    Join our regular study circles, attend events, and participate in 
+                    community service activities that help spread spiritual wisdom.
+                  </p>
+                  <Button variant="outline" className="w-full">
+                    Learn About Community Programs
+                  </Button>
                 </div>
               </CardContent>
             </Card>
@@ -372,23 +331,23 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Support Section */}
+        {/* About Our Approach */}
         <div className="bg-gradient-earth rounded-2xl p-8">
           <div className="text-center space-y-6 max-w-2xl mx-auto">
             <h2 className="text-3xl font-serif font-semibold text-foreground">
-              Support Our Mission
+              Our Approach to Spiritual Guidance
             </h2>
             <p className="text-muted-foreground">
-              Help us continue spreading spiritual wisdom and supporting seekers worldwide. 
-              Your contribution makes a meaningful difference in our community.
+              We believe in providing authentic, practical spiritual guidance rooted in 
+              ancient Vedic wisdom. Our approach combines traditional teachings with 
+              modern application to help you on your spiritual journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="donate" size="lg">
-                <Heart className="h-5 w-5" />
-                Make a Donation
+              <Button variant="sacred" size="lg">
+                Learn About Our Philosophy
               </Button>
               <Button variant="outline" size="lg">
-                Volunteer With Us
+                Explore Our Programs
               </Button>
             </div>
           </div>

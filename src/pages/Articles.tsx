@@ -1,14 +1,12 @@
 import { useState } from "react";
-import { Search, Filter, Calendar, Clock, User, ArrowRight, Tag } from "lucide-react";
+import { Filter, Calendar, Clock, User, ArrowRight, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
 const Articles = () => {
-  const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   // Sample articles data
@@ -87,11 +85,8 @@ const Articles = () => {
   ];
 
   const filteredArticles = articles.filter(article => {
-    const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         article.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         article.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
     const matchesCategory = selectedCategory === "all" || article.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+    return matchesCategory;
   });
 
   const featuredArticle = articles.find(article => article.featured);
@@ -119,19 +114,10 @@ const Articles = () => {
           </p>
         </div>
 
-        {/* Search and Filter */}
-        <div className="mb-8 flex flex-col md:flex-row gap-4 max-w-2xl mx-auto">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Search articles and topics..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
-            />
-          </div>
+        {/* Filter */}
+        <div className="mb-8 flex justify-center">
           <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-            <SelectTrigger className="md:w-48">
+            <SelectTrigger className="w-48">
               <Filter className="h-4 w-4 mr-2" />
               <SelectValue />
             </SelectTrigger>
@@ -146,7 +132,7 @@ const Articles = () => {
         </div>
 
         {/* Featured Article */}
-        {featuredArticle && searchTerm === "" && selectedCategory === "all" && (
+        {featuredArticle && selectedCategory === "all" && (
           <div className="mb-12">
             <h2 className="text-2xl font-serif font-semibold text-foreground mb-6">
               Featured Article
@@ -211,7 +197,7 @@ const Articles = () => {
         <div className="mb-12">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-serif font-semibold text-foreground">
-              {searchTerm || selectedCategory !== "all" ? "Search Results" : "Recent Articles"}
+              {selectedCategory !== "all" ? "Filtered Articles" : "Recent Articles"}
             </h2>
             <p className="text-sm text-muted-foreground">
               {filteredArticles.length} article{filteredArticles.length !== 1 ? 's' : ''} found
@@ -279,50 +265,23 @@ const Articles = () => {
           <div className="text-center py-12">
             <div className="space-y-4">
               <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto">
-                <Search className="h-8 w-8 text-muted-foreground" />
+                <Filter className="h-8 w-8 text-muted-foreground" />
               </div>
               <h3 className="text-xl font-semibold text-foreground">No articles found</h3>
               <p className="text-muted-foreground">
-                Try adjusting your search terms or category filter.
+                Try selecting a different category.
               </p>
               <Button 
                 variant="outline" 
                 onClick={() => {
-                  setSearchTerm("");
                   setSelectedCategory("all");
                 }}
               >
-                Clear Filters
+                Show All Articles
               </Button>
             </div>
           </div>
         )}
-
-        {/* Newsletter Signup */}
-        <div className="bg-gradient-earth rounded-2xl p-8">
-          <div className="text-center space-y-6 max-w-2xl mx-auto">
-            <h2 className="text-3xl font-serif font-semibold text-foreground">
-              Stay Updated with Weekly Wisdom
-            </h2>
-            <p className="text-muted-foreground">
-              Subscribe to receive our latest articles, teachings, and spiritual insights 
-              delivered directly to your inbox every week.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <Input 
-                type="email" 
-                placeholder="Your email address" 
-                className="flex-1 bg-background/50"
-              />
-              <Button variant="sacred">
-                Subscribe Now
-              </Button>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Join 5,000+ spiritual seekers. Unsubscribe anytime.
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );

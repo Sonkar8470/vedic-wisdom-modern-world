@@ -5,7 +5,6 @@ import {
   MapPin, 
   Users, 
   ExternalLink, 
-  Search, 
   Filter,
   Video,
   User,
@@ -13,13 +12,11 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
 const Events = () => {
-  const [searchTerm, setSearchTerm] = useState("");
   const [selectedType, setSelectedType] = useState("all");
   const [selectedMonth, setSelectedMonth] = useState("all");
 
@@ -142,11 +139,9 @@ const Events = () => {
   ];
 
   const filteredEvents = events.filter(event => {
-    const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         event.description.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesType = selectedType === "all" || event.type === selectedType;
     const matchesMonth = selectedMonth === "all" || event.date.startsWith(selectedMonth);
-    return matchesSearch && matchesType && matchesMonth;
+    return matchesType && matchesMonth;
   });
 
   const featuredEvent = events.find(event => event.featured);
@@ -212,17 +207,8 @@ const Events = () => {
           </p>
         </div>
 
-        {/* Search and Filter */}
-        <div className="mb-8 flex flex-col md:flex-row gap-4 max-w-3xl mx-auto">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Search events..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
-            />
-          </div>
+        {/* Filters */}
+        <div className="mb-8 flex flex-col md:flex-row gap-4 justify-center max-w-2xl mx-auto">
           <Select value={selectedType} onValueChange={setSelectedType}>
             <SelectTrigger className="md:w-48">
               <Filter className="h-4 w-4 mr-2" />
@@ -251,7 +237,7 @@ const Events = () => {
         </div>
 
         {/* Featured Event */}
-        {featuredEvent && searchTerm === "" && selectedType === "all" && selectedMonth === "all" && (
+        {featuredEvent && selectedType === "all" && selectedMonth === "all" && (
           <div className="mb-12">
             <h2 className="text-2xl font-serif font-semibold text-foreground mb-6">
               Featured Event
@@ -353,7 +339,7 @@ const Events = () => {
         <div className="mb-12">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-serif font-semibold text-foreground">
-              {searchTerm || selectedType !== "all" || selectedMonth !== "all" ? "Search Results" : "Upcoming Events"}
+              {selectedType !== "all" || selectedMonth !== "all" ? "Filtered Events" : "Upcoming Events"}
             </h2>
             <p className="text-sm text-muted-foreground">
               {filteredEvents.length} event{filteredEvents.length !== 1 ? 's' : ''} found
@@ -437,12 +423,11 @@ const Events = () => {
               </div>
               <h3 className="text-xl font-semibold text-foreground">No events found</h3>
               <p className="text-muted-foreground">
-                Try adjusting your search terms or filters.
+                Try adjusting your filters.
               </p>
               <Button 
                 variant="outline" 
                 onClick={() => {
-                  setSearchTerm("");
                   setSelectedType("all");
                   setSelectedMonth("all");
                 }}
@@ -452,33 +437,6 @@ const Events = () => {
             </div>
           </div>
         )}
-
-        {/* Newsletter Signup */}
-        <div className="bg-gradient-earth rounded-2xl p-8">
-          <div className="text-center space-y-6 max-w-2xl mx-auto">
-            <h2 className="text-3xl font-serif font-semibold text-foreground">
-              Stay Updated on Events
-            </h2>
-            <p className="text-muted-foreground">
-              Be the first to know about upcoming spiritual events, workshops, and special gatherings. 
-              Subscribe to our event newsletter for early access to registration.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <Input 
-                type="email" 
-                placeholder="Your email address" 
-                className="flex-1 bg-background/50"
-              />
-              <Button variant="sacred">
-                <Calendar className="h-4 w-4" />
-                Subscribe
-              </Button>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Get event reminders and exclusive invitations. Unsubscribe anytime.
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );

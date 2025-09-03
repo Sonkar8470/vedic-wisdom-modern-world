@@ -1,25 +1,21 @@
 import { useState } from "react";
 import { 
-  ShoppingCart, 
   Clock, 
   Users, 
   Star, 
   BookOpen, 
   Video, 
   Award,
-  Search,
   Filter,
   Heart
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
 const Courses = () => {
-  const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedLevel, setSelectedLevel] = useState("all");
 
@@ -32,7 +28,6 @@ const Courses = () => {
       category: "bhakti-yoga",
       level: "beginner",
       price: 99,
-      originalPrice: 149,
       duration: "8 weeks",
       lessons: 24,
       students: 1250,
@@ -49,7 +44,6 @@ const Courses = () => {
       category: "meditation",
       level: "advanced",
       price: 149,
-      originalPrice: 199,
       duration: "12 weeks",
       lessons: 36,
       students: 890,
@@ -65,7 +59,6 @@ const Courses = () => {
       category: "scripture",
       level: "intermediate",
       price: 129,
-      originalPrice: 179,
       duration: "16 weeks",
       lessons: 48,
       students: 2100,
@@ -81,7 +74,6 @@ const Courses = () => {
       category: "lifestyle",
       level: "beginner",
       price: 79,
-      originalPrice: 119,
       duration: "6 weeks",
       lessons: 18,
       students: 1560,
@@ -97,7 +89,6 @@ const Courses = () => {
       category: "meditation",
       level: "intermediate",
       price: 109,
-      originalPrice: 149,
       duration: "10 weeks",
       lessons: 30,
       students: 745,
@@ -113,7 +104,6 @@ const Courses = () => {
       category: "leadership",
       level: "advanced",
       price: 299,
-      originalPrice: 399,
       duration: "20 weeks",
       lessons: 60,
       students: 320,
@@ -141,11 +131,9 @@ const Courses = () => {
   ];
 
   const filteredCourses = courses.filter(course => {
-    const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         course.description.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === "all" || course.category === selectedCategory;
     const matchesLevel = selectedLevel === "all" || course.level === selectedLevel;
-    return matchesSearch && matchesCategory && matchesLevel;
+    return matchesCategory && matchesLevel;
   });
 
   const featuredCourse = courses.find(course => course.featured);
@@ -173,17 +161,8 @@ const Courses = () => {
           </p>
         </div>
 
-        {/* Search and Filters */}
-        <div className="mb-8 flex flex-col md:flex-row gap-4 max-w-4xl mx-auto">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Search courses..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
-            />
-          </div>
+        {/* Filters */}
+        <div className="mb-8 flex flex-col md:flex-row gap-4 justify-center max-w-2xl mx-auto">
           <Select value={selectedCategory} onValueChange={setSelectedCategory}>
             <SelectTrigger className="md:w-48">
               <Filter className="h-4 w-4 mr-2" />
@@ -212,7 +191,7 @@ const Courses = () => {
         </div>
 
         {/* Featured Course */}
-        {featuredCourse && searchTerm === "" && selectedCategory === "all" && selectedLevel === "all" && (
+        {featuredCourse && selectedCategory === "all" && selectedLevel === "all" && (
           <div className="mb-12">
             <h2 className="text-2xl font-serif font-semibold text-foreground mb-6">
               Featured Course
@@ -266,13 +245,10 @@ const Courses = () => {
                     </div>
                     
                     <div className="flex items-center gap-6">
-                      <div className="flex items-center gap-2">
+                      <div className="text-center">
                         <span className="text-3xl font-bold text-primary">${featuredCourse.price}</span>
-                        <span className="text-lg text-muted-foreground line-through">${featuredCourse.originalPrice}</span>
+                        <p className="text-sm text-muted-foreground">Course fee</p>
                       </div>
-                      <Badge variant="secondary" className="bg-green-100 text-green-800">
-                        Save ${featuredCourse.originalPrice - featuredCourse.price}
-                      </Badge>
                     </div>
                   </div>
                   
@@ -291,8 +267,8 @@ const Courses = () => {
                     
                     <div className="flex flex-col gap-4">
                       <Button variant="sacred" size="xl" className="group">
-                        <ShoppingCart className="h-5 w-5" />
-                        Enroll Now - ${featuredCourse.price}
+                        <BookOpen className="h-5 w-5" />
+                        Learn More - ${featuredCourse.price}
                       </Button>
                       <Button variant="outline" size="lg">
                         <Heart className="h-5 w-5" />
@@ -301,8 +277,8 @@ const Courses = () => {
                     </div>
                     
                     <div className="text-center text-sm text-muted-foreground">
-                      <p>30-day money-back guarantee</p>
-                      <p>Lifetime access included</p>
+                      <p>Comprehensive course materials included</p>
+                      <p>Lifetime access to content</p>
                     </div>
                   </div>
                 </div>
@@ -315,7 +291,7 @@ const Courses = () => {
         <div className="mb-12">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-serif font-semibold text-foreground">
-              {searchTerm || selectedCategory !== "all" || selectedLevel !== "all" ? "Search Results" : "All Courses"}
+              {selectedCategory !== "all" || selectedLevel !== "all" ? "Filtered Courses" : "All Courses"}
             </h2>
             <p className="text-sm text-muted-foreground">
               {filteredCourses.length} course{filteredCourses.length !== 1 ? 's' : ''} found
@@ -369,19 +345,15 @@ const Courses = () => {
                   <Separator />
 
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
+                    <div>
                       <span className="text-xl font-bold text-primary">${course.price}</span>
-                      <span className="text-sm text-muted-foreground line-through">${course.originalPrice}</span>
                     </div>
-                    <Badge variant="secondary" className="bg-green-100 text-green-800 text-xs">
-                      {Math.round(((course.originalPrice - course.price) / course.originalPrice) * 100)}% off
-                    </Badge>
                   </div>
 
                   <div className="space-y-2">
                     <Button variant="sacred" className="w-full group">
-                      <ShoppingCart className="h-4 w-4" />
-                      Add to Cart
+                      <BookOpen className="h-4 w-4" />
+                      Learn More
                     </Button>
                     <Button variant="outline" size="sm" className="w-full">
                       View Details
@@ -402,12 +374,11 @@ const Courses = () => {
               </div>
               <h3 className="text-xl font-semibold text-foreground">No courses found</h3>
               <p className="text-muted-foreground">
-                Try adjusting your search terms or filters.
+                Try adjusting your filters.
               </p>
               <Button 
                 variant="outline" 
                 onClick={() => {
-                  setSearchTerm("");
                   setSelectedCategory("all");
                   setSelectedLevel("all");
                 }}
@@ -437,7 +408,7 @@ const Courses = () => {
           </Card>
         </div>
 
-        {/* Support Section */}
+        {/* Learning Experience Section */}
         <div className="bg-gradient-earth rounded-2xl p-8">
           <div className="text-center space-y-6 max-w-2xl mx-auto">
             <h2 className="text-3xl font-serif font-semibold text-foreground">
@@ -453,8 +424,7 @@ const Courses = () => {
                 Browse All Courses
               </Button>
               <Button variant="outline" size="lg">
-                <Heart className="h-5 w-5" />
-                Support Our Mission
+                Learn About Our Teaching
               </Button>
             </div>
           </div>

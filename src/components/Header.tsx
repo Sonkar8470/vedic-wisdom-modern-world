@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Search, Heart } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
-import { Input } from "./ui/input";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
 
   const navItems = [
@@ -60,41 +58,6 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center gap-4">
-            {/* Search */}
-            <div className="relative">
-              {isSearchOpen ? (
-                <div className="flex items-center gap-2">
-                  <Input 
-                    placeholder="Search..." 
-                    className="w-64"
-                    autoFocus
-                  />
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setIsSearchOpen(false)}
-                  >
-                    <X className="h-4 w-4" />
-                  </Button>
-                </div>
-              ) : (
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setIsSearchOpen(true)}
-                >
-                  <Search className="h-4 w-4" />
-                </Button>
-              )}
-            </div>
-            
-            <Button variant="donate" size="sm">
-              <Heart className="h-4 w-4" />
-              Donate
-            </Button>
-          </div>
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden">
@@ -126,13 +89,6 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <div className="flex items-center gap-4 pt-4 border-t border-border">
-                <Input placeholder="Search..." className="flex-1" />
-                <Button variant="donate" size="sm">
-                  <Heart className="h-4 w-4" />
-                  Donate
-                </Button>
-              </div>
             </nav>
           </div>
         )}
