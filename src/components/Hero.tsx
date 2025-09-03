@@ -59,7 +59,7 @@ const Hero = () => {
               </div>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground leading-tight">
-                Ancient Vedic Wisdom 
+                 Vedic Wisdom 
                 <span className="block bg-gradient-primary bg-clip-text text-transparent">
                   for the Modern World
                 </span>
