@@ -6,34 +6,22 @@ import heroBanner from "@/assets/hero-banner.jpg";
 const Hero = () => {
   const quickLinks = [
     { 
-      name: "Books", 
-      path: "/books", 
-      icon: Book, 
-      description: "Spiritual Literature" 
-    },
-    { 
       name: "Articles", 
       path: "/articles", 
       icon: ArrowRight, 
       description: "Weekly Insights" 
     },
     { 
-      name: "Media", 
-      path: "/media", 
-      icon: PlayCircle, 
-      description: "Audio & Video" 
+      name: "About", 
+      path: "/about", 
+      icon: Book, 
+      description: "Our Mission" 
     },
     { 
-      name: "Courses", 
-      path: "/courses", 
-      icon: GraduationCap, 
-      description: "Online Learning" 
-    },
-    { 
-      name: "Events", 
-      path: "/events", 
+      name: "Contact", 
+      path: "/contact", 
       icon: Calendar, 
-      description: "Live Sessions" 
+      description: "Get In Touch" 
     },
   ];
 
@@ -79,8 +67,8 @@ const Hero = () => {
                 asChild
                 className="group"
               >
-                <Link to="/courses">
-                  <GraduationCap className="h-5 w-5" />
+                <Link to="/articles">
+                  <ArrowRight className="h-5 w-5" />
                   Start Your Journey
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>

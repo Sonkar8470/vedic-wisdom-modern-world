@@ -9,10 +9,7 @@ import { Separator } from "./ui/separator";
 const Footer = () => {
   const quickLinks = [
     { name: "About", path: "/about" },
-    { name: "Books", path: "/books" },
     { name: "Articles", path: "/articles" },
-    { name: "Courses", path: "/courses" },
-    { name: "Events", path: "/events" },
     { name: "Contact", path: "/contact" },
   ];
 

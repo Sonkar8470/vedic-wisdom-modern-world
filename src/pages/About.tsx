@@ -94,11 +94,11 @@ const About = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="sacred" size="lg">
                 <Book className="h-5 w-5" />
-                View Books
+                Read Articles
               </Button>
               <Button variant="wisdom" size="lg">
                 <Users className="h-5 w-5" />
-                Join Community
+                Contact Us
               </Button>
             </div>
           </div>

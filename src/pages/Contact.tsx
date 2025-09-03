@@ -52,10 +52,8 @@ const Contact = () => {
 
   const categories = [
     { value: "general", label: "General Inquiry" },
-    { value: "courses", label: "Courses & Learning" },
-    { value: "events", label: "Events & Workshops" },
-    { value: "books", label: "Books & Publications" },
-    { value: "media", label: "Media & Content" },
+    { value: "articles", label: "Articles & Content" },
+    { value: "spiritual-guidance", label: "Spiritual Guidance" },
     { value: "donations", label: "Donations & Support" },
     { value: "technical", label: "Technical Support" }
   ];
@@ -287,7 +285,7 @@ const Contact = () => {
                   How can I attend events at ISKCON Chowpatty?
                 </h3>
                 <p className="text-sm text-muted-foreground">
-                  Most of our regular programs are open to all. Check our Events page for 
+                  Most of our regular programs are open to all. Contact us directly for 
                   specific registration requirements and timings.
                 </p>
               </CardContent>
