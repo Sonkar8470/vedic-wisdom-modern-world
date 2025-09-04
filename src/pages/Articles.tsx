@@ -101,12 +101,12 @@ const Articles = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-dark">
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center space-y-4 mb-12">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-foreground">
-            Spiritual <span className="bg-gradient-primary bg-clip-text text-transparent">Articles</span>
+            Spiritual <span className="bg-gradient-gold bg-clip-text text-transparent">Articles</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Weekly insights and teachings on Bhakti Yoga, spiritual practice, and applying 
@@ -117,13 +117,13 @@ const Articles = () => {
         {/* Filter */}
         <div className="mb-8 flex justify-center">
           <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-            <SelectTrigger className="w-48">
+            <SelectTrigger className="w-48 bg-card/60 border-border/50 hover:border-primary/50 hover:shadow-gold transition-all duration-300">
               <Filter className="h-4 w-4 mr-2" />
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-card border-border/50">
               {categories.map((category) => (
-                <SelectItem key={category.value} value={category.value}>
+                <SelectItem key={category.value} value={category.value} className="hover:bg-primary/10">
                   {category.label}
                 </SelectItem>
               ))}
@@ -137,15 +137,15 @@ const Articles = () => {
             <h2 className="text-2xl font-serif font-semibold text-foreground mb-6">
               Featured Article
             </h2>
-            <Card className="border-border shadow-warm hover:shadow-sacred transition-all duration-300">
+            <Card className="border-border/50 shadow-warm hover:shadow-gold hover:border-primary/50 transition-all duration-300 bg-card/60 backdrop-blur-sm">
               <CardHeader>
                 <div className="flex items-start justify-between gap-4">
                   <div className="space-y-4 flex-1">
                     <div className="flex items-center gap-2">
-                      <Badge variant="default" className="bg-primary text-primary-foreground">
+                      <Badge className="bg-gradient-gold text-primary-foreground shadow-gold">
                         Featured
                       </Badge>
-                      <Badge variant="outline">
+                      <Badge variant="outline" className="border-primary/50 text-primary">
                         {categories.find(cat => cat.value === featuredArticle.category)?.label}
                       </Badge>
                     </div>
@@ -182,7 +182,7 @@ const Articles = () => {
                       ))}
                     </div>
                     
-                    <Button variant="sacred" size="lg" className="group">
+                    <Button className="bg-gradient-gold text-primary-foreground hover:shadow-gold hover:scale-105 transition-all duration-300 group" size="lg">
                       Read Full Article
                       <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </Button>
@@ -206,10 +206,10 @@ const Articles = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {recentArticles.map((article) => (
-              <Card key={article.id} className="group hover:shadow-warm transition-all duration-300 hover:scale-[1.02] border-border">
+              <Card key={article.id} className="group hover:shadow-gold hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] border-border/50 bg-card/60 backdrop-blur-sm">
                 <CardHeader className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <Badge variant="outline" className="text-xs">
+                    <Badge variant="outline" className="text-xs border-primary/50 text-primary">
                       {categories.find(cat => cat.value === article.category)?.label}
                     </Badge>
                     <span className="text-xs text-muted-foreground">
@@ -229,7 +229,7 @@ const Articles = () => {
 
                   <div className="flex flex-wrap gap-2">
                     {article.tags.slice(0, 3).map((tag) => (
-                      <Badge key={tag} variant="outline" className="text-xs">
+                      <Badge key={tag} variant="outline" className="text-xs border-primary/30 text-primary/80">
                         {tag}
                       </Badge>
                     ))}
@@ -249,7 +249,7 @@ const Articles = () => {
                       </div>
                     </div>
                     
-                    <Button variant="ghost" size="sm" className="group">
+                    <Button variant="ghost" size="sm" className="group text-primary hover:text-primary-glow hover:bg-primary/10">
                       Read More
                       <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
                     </Button>

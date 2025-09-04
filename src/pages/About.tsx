@@ -29,12 +29,12 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-dark bg-pattern">
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center space-y-4 mb-16">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-foreground">
-            About <span className="bg-gradient-primary bg-clip-text text-transparent">YFMA</span>
+            About <span className="bg-gradient-gold bg-clip-text text-transparent">YFMA</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Yoga for Modern Age is dedicated to bringing ancient Vedic wisdom into contemporary life, 
@@ -43,7 +43,7 @@ const About = () => {
         </div>
 
         {/* Mission Statement */}
-        <div className="bg-gradient-earth rounded-2xl p-8 mb-16 shadow-warm">
+        <div className="bg-card/60 backdrop-blur-sm rounded-2xl p-8 mb-16 shadow-warm border border-border/50">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <h2 className="text-3xl font-serif font-semibold text-foreground">
               Our Mission
@@ -92,11 +92,11 @@ const About = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="sacred" size="lg">
+              <Button className="bg-gradient-gold text-primary-foreground hover:shadow-gold hover:scale-105 transition-all duration-300" size="lg">
                 <Book className="h-5 w-5" />
                 Read Articles
               </Button>
-              <Button variant="wisdom" size="lg">
+              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-gold transition-all duration-300" size="lg">
                 <Users className="h-5 w-5" />
                 Contact Us
               </Button>
@@ -105,7 +105,7 @@ const About = () => {
 
           <div className="order-1 lg:order-2">
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-primary rounded-2xl blur-lg opacity-20"></div>
+              <div className="absolute -inset-4 bg-gradient-gold rounded-2xl blur-lg opacity-20"></div>
               <img
                 src={vrajaImage}
                 alt="Vraja Bihari Das"
@@ -125,9 +125,9 @@ const About = () => {
             {achievements.map((achievement, index) => {
               const Icon = achievement.icon;
               return (
-                <Card key={index} className="border-border hover:shadow-warm transition-all duration-300 hover:scale-105">
+                <Card key={index} className="border-border/50 bg-card/60 backdrop-blur-sm hover:shadow-gold hover:border-primary/50 transition-all duration-300 hover:scale-105">
                   <CardContent className="p-6 text-center space-y-4">
-                    <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto shadow-sacred">
+                    <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center mx-auto shadow-gold">
                       <Icon className="h-8 w-8 text-primary-foreground" />
                     </div>
                     <div>
@@ -142,7 +142,7 @@ const About = () => {
         </div>
 
         {/* ISKCON Chowpatty */}
-        <div className="bg-card rounded-2xl p-8 border border-border shadow-warm">
+        <div className="bg-card/60 backdrop-blur-sm rounded-2xl p-8 border border-border/50 shadow-warm">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <h2 className="text-3xl font-serif font-semibold text-foreground">
               ISKCON Chowpatty
@@ -169,7 +169,7 @@ const About = () => {
               </div>
             </div>
             
-            <Button variant="outline" size="lg">
+            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-gold transition-all duration-300" size="lg">
               Visit Our Temple
             </Button>
           </div>

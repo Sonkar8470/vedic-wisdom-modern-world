@@ -19,7 +19,7 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				inter: ['Inter', 'system-ui', 'sans-serif'],
+				sans: ['Open Sans', 'system-ui', 'sans-serif'],
 				serif: ['Playfair Display', 'Georgia', 'serif'],
 			},
 			colors: {
@@ -75,12 +75,13 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-sunset': 'var(--gradient-sunset)',
-				'gradient-earth': 'var(--gradient-earth)',
+				'gradient-gold': 'var(--gradient-gold)',
+				'gradient-dark': 'var(--gradient-dark)',
 			},
 			boxShadow: {
 				'sacred': 'var(--shadow-sacred)',
 				'warm': 'var(--shadow-warm)',
+				'gold': 'var(--shadow-gold)',
 			},
 			transitionTimingFunction: {
 				'sacred': 'var(--transition-sacred)',

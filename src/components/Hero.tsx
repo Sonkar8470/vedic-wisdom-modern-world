@@ -26,13 +26,20 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative min-h-[80vh] flex items-center overflow-hidden">
-      {/* Background Image */}
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      {/* Background Image with Dark Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBanner})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-background/70" />
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 25% 25%, hsl(var(--primary)) 0%, transparent 50%), 
+                            radial-gradient(circle at 75% 75%, hsl(var(--primary)) 0%, transparent 50%)`,
+            backgroundSize: '400px 400px'
+          }} />
+        </div>
       </div>
 
       <div className="relative container mx-auto px-4 py-20">
@@ -41,14 +48,14 @@ const Hero = () => {
           <div className="space-y-8 animate-fade-in">
             <div className="space-y-6">
               <div className="inline-block">
-                <span className="bg-gradient-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium shadow-sacred">
+                <span className="bg-gradient-gold text-primary-foreground px-6 py-3 rounded-full text-sm font-medium shadow-gold hover-glow">
                   ✨ Welcome to Spiritual Transformation
                 </span>
               </div>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground leading-tight">
                  Vedic Wisdom 
-                <span className="block bg-gradient-primary bg-clip-text text-transparent">
+                <span className="block bg-gradient-gold bg-clip-text text-transparent drop-shadow-lg">
                   for the Modern World
                 </span>
               </h1>
@@ -62,10 +69,9 @@ const Hero = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
-                variant="sacred" 
+                className="bg-gradient-gold text-primary-foreground hover:shadow-gold hover:scale-105 transition-all duration-300 group"
                 size="xl" 
                 asChild
-                className="group"
               >
                 <Link to="/articles">
                   <ArrowRight className="h-5 w-5" />
@@ -75,7 +81,8 @@ const Hero = () => {
               </Button>
               
               <Button 
-                variant="wisdom" 
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-gold transition-all duration-300"
                 size="xl" 
                 asChild
               >
@@ -86,17 +93,17 @@ const Hero = () => {
             </div>
 
             {/* Statistics */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
-              <div className="text-center">
-                <p className="text-2xl font-bold text-primary">10K+</p>
+            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border/50">
+              <div className="text-center group">
+                <p className="text-2xl font-bold text-primary group-hover:text-primary-glow transition-colors">10K+</p>
                 <p className="text-sm text-muted-foreground">Students Worldwide</p>
               </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold text-primary">25+</p>
+              <div className="text-center group">
+                <p className="text-2xl font-bold text-primary group-hover:text-primary-glow transition-colors">25+</p>
                 <p className="text-sm text-muted-foreground">Years Teaching</p>
               </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold text-primary">15+</p>
+              <div className="text-center group">
+                <p className="text-2xl font-bold text-primary group-hover:text-primary-glow transition-colors">15+</p>
                 <p className="text-sm text-muted-foreground">Published Books</p>
               </div>
             </div>
@@ -115,10 +122,10 @@ const Hero = () => {
                   <Link
                     key={link.name}
                     to={link.path}
-                    className="group flex items-center gap-4 p-4 bg-card/80 backdrop-blur-sm border border-border rounded-lg hover:shadow-warm transition-all duration-300 hover:scale-[1.02]"
+                    className="group flex items-center gap-4 p-6 bg-card/60 backdrop-blur-sm border border-border/50 rounded-xl hover:shadow-gold hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] hover:bg-card/80"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <div className="p-3 bg-gradient-primary rounded-full shadow-sacred group-hover:scale-110 transition-transform">
+                    <div className="p-3 bg-gradient-gold rounded-full shadow-gold group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
                       <Icon className="h-5 w-5 text-primary-foreground" />
                     </div>
                     <div className="flex-1">

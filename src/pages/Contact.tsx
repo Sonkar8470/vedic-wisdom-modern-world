@@ -69,12 +69,12 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-dark bg-pattern">
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center space-y-4 mb-12">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-foreground">
-            Contact <span className="bg-gradient-primary bg-clip-text text-transparent">Us</span>
+            Contact <span className="bg-gradient-gold bg-clip-text text-transparent">Us</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             We're here to support your spiritual journey. Reach out with questions, 
@@ -85,7 +85,7 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-12 mb-12">
           {/* Contact Form */}
           <div>
-            <Card className="border-border shadow-warm">
+            <Card className="border-border/50 bg-card/60 backdrop-blur-sm shadow-warm">
               <CardHeader>
                 <CardTitle className="text-2xl font-serif text-foreground">
                   Send Us a Message
@@ -159,7 +159,7 @@ const Contact = () => {
                     />
                   </div>
 
-                  <Button type="submit" variant="sacred" size="lg" className="w-full">
+                  <Button type="submit" className="bg-gradient-gold text-primary-foreground hover:shadow-gold hover:scale-105 transition-all duration-300 w-full" size="lg">
                     <Send className="h-5 w-5" />
                     Send Message
                   </Button>
@@ -179,10 +179,10 @@ const Contact = () => {
                 {contactMethods.map((method, index) => {
                   const Icon = method.icon;
                   return (
-                    <Card key={index} className="border-border hover:shadow-warm transition-all duration-300">
+                    <Card key={index} className="border-border/50 bg-card/60 backdrop-blur-sm hover:shadow-gold hover:border-primary/50 transition-all duration-300">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
-                          <div className="p-3 bg-gradient-primary rounded-full shadow-sacred">
+                          <div className="p-3 bg-gradient-gold rounded-full shadow-gold">
                             <Icon className="h-6 w-6 text-primary-foreground" />
                           </div>
                           <div className="flex-1">
@@ -208,7 +208,7 @@ const Contact = () => {
             </div>
 
             {/* ISKCON Chowpatty Address */}
-            <Card className="border-border">
+            <Card className="border-border/50 bg-card/60 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="flex items-center gap-3 text-foreground">
                   <MapPin className="h-6 w-6 text-primary" />
@@ -239,7 +239,7 @@ const Contact = () => {
                   </div>
                 </div>
                 
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-gold transition-all duration-300">
                   <MapPin className="h-4 w-4" />
                   Get Directions
                 </Button>
@@ -247,7 +247,7 @@ const Contact = () => {
             </Card>
 
             {/* Community Information */}
-            <Card className="border-border">
+            <Card className="border-border/50 bg-card/60 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-foreground">Join Our Community</CardTitle>
                 <p className="text-sm text-muted-foreground">
@@ -264,7 +264,7 @@ const Contact = () => {
                     Join our regular study circles, attend events, and participate in 
                     community service activities that help spread spiritual wisdom.
                   </p>
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-gold transition-all duration-300">
                     Learn About Community Programs
                   </Button>
                 </div>
@@ -279,7 +279,7 @@ const Contact = () => {
             Frequently Asked Questions
           </h2>
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <Card className="border-border">
+            <Card className="border-border/50 bg-card/60 backdrop-blur-sm">
               <CardContent className="p-6">
                 <h3 className="font-semibold text-foreground mb-3">
                   How can I attend events at ISKCON Chowpatty?
@@ -291,7 +291,7 @@ const Contact = () => {
               </CardContent>
             </Card>
             
-            <Card className="border-border">
+            <Card className="border-border/50 bg-card/60 backdrop-blur-sm">
               <CardContent className="p-6">
                 <h3 className="font-semibold text-foreground mb-3">
                   Are the online courses suitable for beginners?
@@ -303,7 +303,7 @@ const Contact = () => {
               </CardContent>
             </Card>
             
-            <Card className="border-border">
+            <Card className="border-border/50 bg-card/60 backdrop-blur-sm">
               <CardContent className="p-6">
                 <h3 className="font-semibold text-foreground mb-3">
                   How can I support Yoga for Modern Age?
@@ -315,7 +315,7 @@ const Contact = () => {
               </CardContent>
             </Card>
             
-            <Card className="border-border">
+            <Card className="border-border/50 bg-card/60 backdrop-blur-sm">
               <CardContent className="p-6">
                 <h3 className="font-semibold text-foreground mb-3">
                   Can I request a private consultation?
@@ -330,7 +330,7 @@ const Contact = () => {
         </div>
 
         {/* About Our Approach */}
-        <div className="bg-gradient-earth rounded-2xl p-8">
+        <div className="bg-card/60 backdrop-blur-sm rounded-2xl p-8 border border-border/50">
           <div className="text-center space-y-6 max-w-2xl mx-auto">
             <h2 className="text-3xl font-serif font-semibold text-foreground">
               Our Approach to Spiritual Guidance
@@ -341,10 +341,10 @@ const Contact = () => {
               modern application to help you on your spiritual journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="sacred" size="lg">
+              <Button className="bg-gradient-gold text-primary-foreground hover:shadow-gold hover:scale-105 transition-all duration-300" size="lg">
                 Learn About Our Philosophy
               </Button>
-              <Button variant="outline" size="lg">
+              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-gold transition-all duration-300" size="lg">
                 Explore Our Programs
               </Button>
             </div>

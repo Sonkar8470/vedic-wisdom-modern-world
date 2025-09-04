@@ -15,14 +15,14 @@ const Footer = () => {
 
 
   return (
-    <footer className="bg-gradient-earth border-t border-border">
+    <footer className="bg-gradient-dark border-t border-border/50">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand & Mission */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center shadow-sacred">
-                <span className="text-white font-bold text-lg">Y</span>
+              <div className="w-10 h-10 bg-gradient-gold rounded-full flex items-center justify-center shadow-gold">
+                <span className="text-primary-foreground font-bold text-lg">Y</span>
               </div>
               <div>
                 <h3 className="font-serif font-semibold text-lg text-foreground">
@@ -72,7 +72,7 @@ const Footer = () => {
                 <Mail className="h-4 w-4 text-primary" />
                 <a 
                   href="mailto:info@yogaformodernage.com"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  className="text-sm text-muted-foreground hover:text-primary hover:shadow-gold transition-all duration-300"
                 >
                   info@yogaformodernage.com
                 </a>
@@ -81,7 +81,7 @@ const Footer = () => {
                 <Phone className="h-4 w-4 text-primary" />
                 <a 
                   href="tel:+912226205090"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  className="text-sm text-muted-foreground hover:text-primary hover:shadow-gold transition-all duration-300"
                 >
                   +91 22 2620 5090
                 </a>
