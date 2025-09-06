@@ -75,16 +75,18 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-gold': 'var(--gradient-gold)',
-				'gradient-dark': 'var(--gradient-dark)',
+				'gradient-orange': 'var(--gradient-orange)',
+				'gradient-peaceful': 'var(--gradient-peaceful)',
+				'gradient-hero': 'var(--gradient-hero)',
 			},
 			boxShadow: {
-				'sacred': 'var(--shadow-sacred)',
+				'peaceful': 'var(--shadow-peaceful)',
 				'warm': 'var(--shadow-warm)',
-				'gold': 'var(--shadow-gold)',
+				'orange': 'var(--shadow-orange)',
+				'soft': 'var(--shadow-soft)',
 			},
 			transitionTimingFunction: {
-				'sacred': 'var(--transition-sacred)',
+				'peaceful': 'var(--transition-peaceful)',
 				'gentle': 'var(--transition-gentle)',
 			},
 			keyframes: {
